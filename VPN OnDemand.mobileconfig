@@ -1,0 +1,175 @@
+<!-- VPN OnDemand.mobileconfig – Version 0.1 -->
+<!-- Description: Configuration File for VPN OnDemand to be used on macOS or iOS -->
+<!-- Found here: https://github.com/nerd-one/VPN-OnDemand -->
+<!-- Author: Florian Knapp – florian@nerd.one – https://nerd.one -->
+<!-- Configuration Profile Reference: https://developer.apple.com/library/prerelease/content/featuredarticles/iPhoneConfigurationProfileRef/Introduction/Introduction.html -->
+
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>PayloadContent</key>
+	<array>
+	<dict>
+			<!-- Configuration for VPNType "IPSec" -->
+			<key>IPSec</key>
+			<dict>
+			
+				<!-- AuthenticationMethod can either be "SharedSecret" or "Certificate" -->
+				
+				<!-- Configuration for AuthenticationMethod "SharedSecret" -->
+				<key>AuthenticationMethod</key>
+				<string>SharedSecret</string>
+				<key>LocalIdentifierType</key>
+				<string>KeyID</string>
+				
+				<!-- RemoteAdress should be the VPN server's IP or DNS name -->
+				<key>RemoteAddress</key>
+				<string>remote.example.om</string>
+				
+				<!-- SharedSecret must be base64 encoded  -->
+				<key>SharedSecret</key>
+				<data>Insert base64 encoded Shared Secret Here</data>
+				
+				<!-- XAuth Configuration -->
+				<key>XAuthEnabled</key>
+				<integer>1</integer>
+				
+				<!-- XAuthName is the login name used for authentication -->
+				<key>XAuthName</key>
+				<string>Insert Username Here</string>
+				
+				<!--  XAuthPassword is the password used for authentication -->
+				<key>XAuthPassword</key>
+				<string>Insert Password Here</string>
+				
+				<!-- Enabling OnDemand – This can be toggled on/off via System Settings/Network [macOS] and Settings/VPN [iOS] -->
+				<key>OnDemandEnabled</key>
+				<integer>1</integer>
+				
+				<!-- OnDemand Rules Dictionary -->
+				<!-- Value for "Action" can either be "Connect", "Disconnect", "Ignore", or "EvaluateConnection" -->
+				<key>OnDemandRules</key>
+				<array>
+					<!-- Edit and/or remove any of the following dictionaries to adjust to your needs -->
+					
+					<!-- Connect if domain name matches the pattern -->
+					<dict>
+						<key>Action</key>
+						<string>Connect</string>
+						<key>DNSDomainMatch</key>
+						<array>
+							<!-- List one or more domain names (use wildcard prefix "*" possible) -->
+							<string>*.example.com</string>
+						</array>
+					</dict>
+					
+					<!-- Disconnect if domain name matches the pattern -->
+					<dict>
+						<key>Action</key>
+						<string>Disconnect</string>
+						<key>DNSDomainMatch</key>
+						<array>
+							<!-- List one or more domain names (use wildcard prefix "*" possible) -->
+							<string>*.company.com</string>
+						</array>
+					</dict>
+					
+					<!-- Connect if device is connected to one of the listed Wifi networks -->
+					<dict>
+						<key>Action</key>
+						<string>Connect</string>
+						<key>InterfaceTypeMatch</key>
+						<string>WiFi</string>
+						<key>SSIDMatch</key>
+						<array>
+							<!-- List one or more WiFi networks -->
+							<string>Name of WiFi Network Here</string>
+							<string>Another WiFi Network</string>
+						</array>
+					</dict>
+					
+					<!-- Disconnect if device is connected to one of the listed Wifi networks -->
+					<dict>
+						<key>Action</key>
+						<string>Disconnect</string>
+						<key>InterfaceTypeMatch</key>
+						<string>WiFi</string>
+						<key>SSIDMatch</key>
+						<array>
+							<!-- List one or more WiFi networks -->
+							<string>My Private Home Network</string>
+							<string>Pretty WiFi for a white guy</string>
+						</array>
+					</dict>
+					
+					<!-- "Connect", "Disconnect", or "Ignore" if device is connected to any other WiFi network -->
+					<dict>
+						<key>Action</key>
+						<string>Connect</string>
+						<key>InterfaceTypeMatch</key>
+						<string>WiFi</string>
+					</dict>
+					
+					<!-- "Connect", "Disconnect", or "Ignore" if device is connected to cellular network (no WiFi connection) -->
+					<dict>
+						<key>Action</key>
+						<string>Connect</string>
+						<key>InterfaceTypeMatch</key>
+						<string>Cellular</string>
+					</dict>
+					
+					<!-- Default action if none of the above mentioned rules matches -->
+					<dict>
+						<key>Action</key>
+						<string>Disconnect</string>
+					</dict>
+				</array>
+			</dict>
+			<key>IPv4</key>
+			<dict>
+			
+				<!-- Set OverridePrimary to "1" to send all traffic through the VPN interface -->
+				<key>OverridePrimary</key>
+				<integer>1</integer>
+
+			</dict>
+			<key>PayloadDescription</key>
+			<string>VPN OnDemand Settings</string>
+			<key>PayloadDisplayName</key>
+			<string>VPN</string>
+			<key>PayloadIdentifier</key>
+			<string>one.nerd.vpn.8494947c-7611-498f-9cbe-631bd9be35f6</string>
+			<key>PayloadType</key>
+			<string>one.nerd.vpn</string>
+			<key>PayloadUUID</key>
+			<string>761ec841-faae-473f-b2af-55cd6bd8374c</string>
+			<key>PayloadVersion</key>
+			<integer>1</integer>
+			<key>Proxies</key>
+			<dict>
+				<key>HTTPEnable</key>
+				<integer>0</integer>
+				<key>HTTPSEnable</key>
+				<integer>0</integer>
+			</dict>
+			<key>UserDefinedName</key>
+			<string>VPN OnDemand</string>
+			<key>VPNType</key>
+			<string>IPSec</string>
+		</dict>
+	</array>
+	<key>PayloadDisplayName</key>
+	<string>VPN OnDemand</string>
+	<key>PayloadIdentifier</key>
+	<string>one.nerd.a4303bdf-0857-4f61-8eac-76d6e8a81fbf</string>
+	<key>PayloadRemovalDisallowed</key>
+	<false/>
+	<key>PayloadType</key>
+	<string>Configuration</string>
+	<key>PayloadUUID</key>
+	<string>7e674e2c-baa6-40b9-9874-712c9be856fe</string>
+	<key>PayloadVersion</key>
+	<integer>1</integer>
+</dict>
+</plist>
