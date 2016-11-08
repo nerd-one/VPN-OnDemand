@@ -29,7 +29,7 @@
 				
 				<!-- SharedSecret must be base64 encoded  -->
 				<key>SharedSecret</key>
-				<data>Insert base64 encoded Shared Secret Here</data>
+				<data>SW5zZXJ0IGJhc2U2NCBlbmNvZGVkIFNoYXJlZCBTZWNyZXQgSGVyZQ==</data>
 				
 				<!-- XAuth Configuration -->
 				<key>XAuthEnabled</key>
