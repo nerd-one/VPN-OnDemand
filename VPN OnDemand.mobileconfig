@@ -110,17 +110,6 @@
 						</array>
 					</dict>
 					
-					<!-- Disconnect if domain name matches the pattern -->
-					<dict>
-						<key>Action</key>
-						<string>Disconnect</string>
-						<key>DNSDomainMatch</key>
-						<array>
-							<!-- List one or more domain names (use wildcard prefix "*" possible) -->
-							<string>*.company.com</string>
-						</array>
-					</dict>
-					
 					<!-- "Connect", "Disconnect", or "Ignore" if device is connected to any other WiFi network -->
 					<dict>
 						<key>Action</key>
