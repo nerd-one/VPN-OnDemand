@@ -53,28 +53,6 @@
 				<array>
 					<!-- Edit and/or remove any of the following dictionaries to adjust to your needs -->
 					
-					<!-- Connect if domain name matches the pattern -->
-					<dict>
-						<key>Action</key>
-						<string>Connect</string>
-						<key>DNSDomainMatch</key>
-						<array>
-							<!-- List one or more domain names (use wildcard prefix "*" possible) -->
-							<string>*.example.com</string>
-						</array>
-					</dict>
-					
-					<!-- Disconnect if domain name matches the pattern -->
-					<dict>
-						<key>Action</key>
-						<string>Disconnect</string>
-						<key>DNSDomainMatch</key>
-						<array>
-							<!-- List one or more domain names (use wildcard prefix "*" possible) -->
-							<string>*.company.com</string>
-						</array>
-					</dict>
-					
 					<!-- Connect if device is connected to one of the listed Wifi networks -->
 					<dict>
 						<key>Action</key>
@@ -100,6 +78,46 @@
 							<!-- List one or more WiFi networks -->
 							<string>My Private Home Network</string>
 							<string>Pretty WiFi for a white guy</string>
+						</array>
+					</dict>
+					
+					<!-- Connect if connected to specific wifi and domain name matches the pattern -->
+					<dict>
+						<key>Action</key>
+						<string>EvaluateConnection</string>
+						
+						<key>InterfaceTypeMatch</key>
+						<string>WiFi</string>
+						<key>SSIDMatch</key>
+						<array>
+							<!-- List one or more WiFi networks -->
+							<string>Name of WiFi Network Here</string>
+							<string>Another WiFi Network</string>
+						</array>
+						
+						<key>ActionParameters</key>
+						<array>
+							<dict>
+								<key>Domains</key>
+								<array>
+									<string>example.com</string>
+								</array>
+								<key>DomainAction</key>
+								<string>ConnectIfNeeded</string>
+								<key>RequiredURLStringProbe</key>
+								<string>https://vpn.nerd.one/12.34.56.78</string>
+							</dict>
+						</array>
+					</dict>
+					
+					<!-- Disconnect if domain name matches the pattern -->
+					<dict>
+						<key>Action</key>
+						<string>Disconnect</string>
+						<key>DNSDomainMatch</key>
+						<array>
+							<!-- List one or more domain names (use wildcard prefix "*" possible) -->
+							<string>*.company.com</string>
 						</array>
 					</dict>
 					
