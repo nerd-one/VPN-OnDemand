@@ -36,10 +36,12 @@
 				<integer>1</integer>
 				
 				<!-- XAuthName is the login name used for authentication -->
-				<key>XAuthName</key>
+					<!-- Remove the following two lines if you don't want the username to be stored in this file  -->
+			<key>XAuthName</key>
 				<string>Insert Username Here</string>
 				
 				<!--  XAuthPassword is the password used for authentication -->
+				<!-- Remove the following two lines if you don't want the password to be stored in this file -->
 				<key>XAuthPassword</key>
 				<string>Insert Password Here</string>
 				
@@ -47,7 +49,7 @@
 				<key>OnDemandEnabled</key>
 				<integer>1</integer>
 				
-				<!-- OnDemand Rules Dictionary -->
+				<!-- OnDemand Rules -->
 				<!-- Value for "Action" can either be "Connect", "Disconnect", "Ignore", or "EvaluateConnection" -->
 				<key>OnDemandRules</key>
 				<array>
@@ -110,6 +112,22 @@
 						</array>
 					</dict>
 					
+					<!-- "Connect", "Disconnect", or "Ignore" if device is connected to cellular network -->
+					<dict>
+						<key>Action</key>
+						<string>Connect</string>
+						<key>InterfaceTypeMatch</key>
+						<string>Cellular</string>
+					</dict>
+					
+					<!-- "Connect", "Disconnect", or "Ignore" if device is connected via Ethernet -->
+					<dict>
+						<key>Action</key>
+						<string>Disconnect</string>
+						<key>InterfaceTypeMatch</key>
+						<string>Ethernet</string>
+					</dict>
+					
 					<!-- "Connect", "Disconnect", or "Ignore" if device is connected to any other WiFi network -->
 					<dict>
 						<key>Action</key>
@@ -118,29 +136,23 @@
 						<string>WiFi</string>
 					</dict>
 					
-					<!-- "Connect", "Disconnect", or "Ignore" if device is connected to cellular network (no WiFi connection) -->
-					<dict>
-						<key>Action</key>
-						<string>Connect</string>
-						<key>InterfaceTypeMatch</key>
-						<string>Cellular</string>
-					</dict>
-					
 					<!-- Default action if none of the above mentioned rules matches -->
 					<dict>
 						<key>Action</key>
-						<string>Disconnect</string>
+						<string>Ignore</string>
 					</dict>
 				</array>
 			</dict>
+			
+			<!-- IPv4 Configuration -->
+			<!-- Set OverridePrimary to "1" to send all traffic through the VPN interface -->
 			<key>IPv4</key>
 			<dict>
-			
-				<!-- Set OverridePrimary to "1" to send all traffic through the VPN interface -->
 				<key>OverridePrimary</key>
 				<integer>1</integer>
-
 			</dict>
+			
+			<!-- Payload information for the file itself -->
 			<key>PayloadDescription</key>
 			<string>VPN OnDemand Settings</string>
 			<key>PayloadDisplayName</key>
@@ -166,10 +178,12 @@
 			<string>IPSec</string>
 		</dict>
 	</array>
+	
+	<!-- Payload information for the file itself -->
 	<key>PayloadDisplayName</key>
 	<string>VPN OnDemand</string>
 	<key>PayloadIdentifier</key>
-	<string>one.nerd.a4303bdf-0857-4f61-8eac-76d6e8a81fbf</string>
+	<string>one.nerd.vpn.a4303bdf-0857-4f61-8eac-76d6e8a81fbf</string>
 	<key>PayloadRemovalDisallowed</key>
 	<false/>
 	<key>PayloadType</key>
