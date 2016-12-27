@@ -36,8 +36,8 @@
 				<integer>1</integer>
 
 				<!-- XAuthName is the login name used for authentication -->
-					<!-- Remove the following two lines if you don't want the username to be stored in this file  -->
-			<key>XAuthName</key>
+				<!-- Remove the following two lines if you don't want the username to be stored in this file  -->
+				<key>XAuthName</key>
 				<string>Insert Username Here</string>
 
 				<!--  XAuthPassword is the password used for authentication -->
@@ -99,6 +99,7 @@
 
 						<key>ActionParameters</key>
 						<array>
+							<!-- Never use VPN to connect to the URLs listed here -->
 							<dict>
 								<key>Domains</key>
 								<array>
@@ -108,6 +109,8 @@
 								<key>DomainAction</key>
 								<string>NeverConnect</string>
 							</dict>
+							
+							<!-- Connect to VPN if needed for the listed URLs -->
 							<dict>
 								<key>Domains</key>
 								<array>
