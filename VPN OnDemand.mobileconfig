@@ -25,7 +25,7 @@
 
 				<!-- RemoteAdress should be the VPN server's IP or DNS name -->
 				<key>RemoteAddress</key>
-				<string>remote.example.om</string>
+				<string>remote.example.com</string>
 
 				<!-- SharedSecret must be base64 encoded  -->
 				<key>SharedSecret</key>
