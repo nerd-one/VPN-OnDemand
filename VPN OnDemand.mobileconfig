@@ -10,8 +10,199 @@
 <dict>
 	<key>PayloadContent</key>
 	<array>
-	<dict>
-			<!-- Configuration for VPNType "IPSec" -->
+		<!-- Configuration for VPNType "IKEv2" -->
+		<dict>
+			<key>IKEv2</key>
+			<dict>
+
+				<!-- AuthenticationMethod can either be "SharedSecret", "Certificate", or "None" -->
+
+				<!-- Configuration for AuthenticationMethod "None" -->
+				<key>AuthenticationMethod</key>
+				<string>None</string>
+
+				<!-- Username and password available, if AuthenticationMethod "None" -->
+				<key>ExtendedAuthEnabled</key>
+				<true/>
+
+				<!-- Remove the following two lines if you don't want the username to be stored in this file  -->
+ 				<key>AuthName</key>
+				<string>Insert Username Here</string>
+
+				<!-- Remove the following two lines if you don't want the password to be stored in this file -->
+				<key>AuthPassword</key>
+				<string>Insert Password Here</string>
+
+				<!-- Enable Perfect Forward Secrecy: true; to disable: false -->
+				<key>EnablePFS</key>
+				<true/>
+
+				<!-- RemoteAdress should be the VPN server's IP or DNS name -->
+				<key>RemoteAddress</key>
+				<string>remote.example.com</string>
+
+				<!-- LocalIdentifier: Identifier of the IKEv2 client -->
+				<key>LocalIdentifier</key>
+				<string>example.com</string>
+
+				<!-- Remote Identifier -->
+				<key>RemoteIdentifier</key>
+				<string>example.com</string>
+
+				<!-- Enabling OnDemand – This can be toggled on/off via System Settings/Network [macOS] and Settings/VPN [iOS] -->
+				<key>OnDemandEnabled</key>
+				<integer>1</integer>
+
+				<!-- OnDemand Rules Dictionary -->
+				<!-- Value for "Action" can either be "Connect", "Disconnect", "Ignore", or "EvaluateConnection" -->
+				<key>OnDemandRules</key>
+				<array>
+					<!-- Edit and/or remove any of the following dictionaries to adjust to your needs -->
+
+					<!-- Connect if device is connected to one of the listed Wifi networks -->
+					<dict>
+						<key>Action</key>
+						<string>Connect</string>
+						<key>InterfaceTypeMatch</key>
+						<string>WiFi</string>
+						<key>SSIDMatch</key>
+						<array>
+							<!-- List one or more WiFi networks -->
+							<string>Name of WiFi Network Here</string>
+							<string>Another WiFi Network</string>
+						</array>
+					</dict>
+
+					<!-- Disconnect if device is connected to one of the listed Wifi networks -->
+					<dict>
+						<key>Action</key>
+						<string>Disconnect</string>
+						<key>InterfaceTypeMatch</key>
+						<string>WiFi</string>
+						<key>SSIDMatch</key>
+						<array>
+							<!-- List one or more WiFi networks -->
+							<string>My Private Home Network</string>
+							<string>Pretty WiFi for a white guy</string>
+						</array>
+					</dict>
+
+					<!-- Connect if connected to specific wifi and domain name matches the pattern -->
+					<dict>
+						<key>Action</key>
+						<string>EvaluateConnection</string>
+
+						<key>InterfaceTypeMatch</key>
+						<string>WiFi</string>
+						<key>SSIDMatch</key>
+						<array>
+							<!-- List one or more WiFi networks -->
+							<string>Name of WiFi Network Here</string>
+							<string>Another WiFi Network</string>
+						</array>
+
+						<key>ActionParameters</key>
+						<array>
+							<!-- Never use VPN to connect to the URLs listed here -->
+							<dict>
+								<key>Domains</key>
+								<array>
+									<string>server.local</string>
+									<string>example.com</string>
+								</array>
+								<key>DomainAction</key>
+								<string>NeverConnect</string>
+							</dict>
+
+							<!-- Connect to VPN if needed for the listed URLs -->
+							<dict>
+								<key>Domains</key>
+								<array>
+									<string>mycompany.com</string>
+								</array>
+								<key>DomainAction</key>
+								<string>ConnectIfNeeded</string>
+								<key>RequiredURLStringProbe</key>
+								<string>https://vpn.nerd.one/12.34.56.78</string>
+							</dict>
+						</array>
+					</dict>
+
+					<!-- "Connect", "Disconnect", or "Ignore" if device is connected to any other WiFi network -->
+					<dict>
+						<key>Action</key>
+						<string>Connect</string>
+						<key>InterfaceTypeMatch</key>
+						<string>Cellular</string>
+					</dict>
+
+					<!-- "Connect", "Disconnect", or "Ignore" if device is connected via Ethernet -->
+					<dict>
+						<key>Action</key>
+						<string>Disconnect</string>
+						<key>InterfaceTypeMatch</key>
+						<string>Ethernet</string>
+					</dict>
+
+					<!-- "Connect", "Disconnect", or "Ignore" if device is connected to any other WiFi network -->
+					<dict>
+						<key>Action</key>
+						<string>Connect</string>
+						<key>InterfaceTypeMatch</key>
+						<string>WiFi</string>
+					</dict>
+
+					<!-- Default action if none of the above mentioned rules matches -->
+					<dict>
+						<key>Action</key>
+						<string>Ignore</string>
+					</dict>
+				</array>
+			</dict>
+
+			<!-- IPv4 Configuration -->
+			<key>IPv4</key>
+			<dict>
+				<!-- Set OverridePrimary to "1" to send all traffic through the VPN interface -->
+				<key>OverridePrimary</key>
+				<integer>1</integer>
+			</dict>
+
+			<!-- Disconnect VPN when Idle for [amount of seconds] -->
+			<key>DisconnectOnIdle</key>
+			<integer>1</integer>
+			<key>DisconnectOnIdleTimer</key>
+			<integer>120</integer>
+
+			<!-- Payload information for the current configuration -->
+			<key>PayloadDescription</key>
+			<string>VPN OnDemand Settings</string>
+			<key>PayloadDisplayName</key>
+			<string>VPN</string>
+			<key>PayloadIdentifier</key>
+			<string>one.nerd.vpn.F9E6ABE2-350B-4A14-8966-925F7DB310D6</string>
+			<key>PayloadType</key>
+			<string>one.nerd.vpn</string>
+			<key>PayloadUUID</key>
+			<string>F9E6ABE2-350B-4A14-8966-925F7DB310D6</string>
+			<key>PayloadVersion</key>
+			<integer>1</integer>
+			<key>Proxies</key>
+			<dict>
+				<key>HTTPEnable</key>
+				<integer>0</integer>
+				<key>HTTPSEnable</key>
+				<integer>0</integer>
+			</dict>
+			<key>UserDefinedName</key>
+			<string>VPN OnDemand Service</string>
+			<key>VPNType</key>
+			<string>IKEv2</string>
+		</dict>
+
+
+		<!-- Configuration for VPNType "IPSec" -->
+		<dict>
 			<key>IPSec</key>
 			<dict>
 
@@ -109,7 +300,7 @@
 								<key>DomainAction</key>
 								<string>NeverConnect</string>
 							</dict>
-							
+
 							<!-- Connect to VPN if needed for the listed URLs -->
 							<dict>
 								<key>Domains</key>
@@ -131,7 +322,7 @@
 						<key>InterfaceTypeMatch</key>
 						<string>Cellular</string>
 					</dict>
-					
+
 					<!-- "Connect", "Disconnect", or "Ignore" if device is connected via Ethernet -->
 					<dict>
 						<key>Action</key>
@@ -139,7 +330,7 @@
 						<key>InterfaceTypeMatch</key>
 						<string>Ethernet</string>
 					</dict>
-					
+
 					<!-- "Connect", "Disconnect", or "Ignore" if device is connected to any other WiFi network -->
 					<dict>
 						<key>Action</key>
@@ -155,7 +346,7 @@
 					</dict>
 				</array>
 			</dict>
-			
+
 			<!-- IPv4 Configuration -->
 			<key>IPv4</key>
 			<dict>
@@ -163,18 +354,18 @@
 				<key>OverridePrimary</key>
 				<integer>1</integer>
 			</dict>
-			
-			<!-- Payload information for the file itself -->
+
+			<!-- Payload information for the current configuration -->
 			<key>PayloadDescription</key>
 			<string>VPN OnDemand Settings</string>
 			<key>PayloadDisplayName</key>
 			<string>VPN</string>
 			<key>PayloadIdentifier</key>
-			<string>one.nerd.vpn.8494947c-7611-498f-9cbe-631bd9be35f6</string>
+			<string>one.nerd.vpn.8500DEF6-71D8-4B51-833C-E754702D2927</string>
 			<key>PayloadType</key>
 			<string>one.nerd.vpn</string>
 			<key>PayloadUUID</key>
-			<string>761ec841-faae-473f-b2af-55cd6bd8374c</string>
+			<string>8500DEF6-71D8-4B51-833C-E754702D2927</string>
 			<key>PayloadVersion</key>
 			<integer>1</integer>
 			<key>Proxies</key>
@@ -185,23 +376,23 @@
 				<integer>0</integer>
 			</dict>
 			<key>UserDefinedName</key>
-			<string>VPN OnDemand</string>
+			<string>VPN OnDemand Service</string>
 			<key>VPNType</key>
 			<string>IPSec</string>
 		</dict>
 	</array>
-	
+
 	<!-- Payload information for the file itself -->
 	<key>PayloadDisplayName</key>
 	<string>VPN OnDemand</string>
 	<key>PayloadIdentifier</key>
-	<string>one.nerd.vpn.a4303bdf-0857-4f61-8eac-76d6e8a81fbf</string>
+	<string>one.nerd.vpn.CD9F3CBF-7243-4946-8A8A-5244E196491E</string>
 	<key>PayloadRemovalDisallowed</key>
 	<false/>
 	<key>PayloadType</key>
 	<string>Configuration</string>
 	<key>PayloadUUID</key>
-	<string>7e674e2c-baa6-40b9-9874-712c9be856fe</string>
+	<string>2D1592E7-D8E1-434E-9578-FBB4E044962F</string>
 	<key>PayloadVersion</key>
 	<integer>1</integer>
 </dict>
