@@ -128,7 +128,7 @@
 						</array>
 					</dict>
 
-					<!-- "Connect", "Disconnect", or "Ignore" if device is connected to any other WiFi network -->
+					<!-- "Connect", "Disconnect", or "Ignore" if device is connected to a Cellular network -->
 					<dict>
 						<key>Action</key>
 						<string>Connect</string>
@@ -315,7 +315,7 @@
 						</array>
 					</dict>
 
-					<!-- "Connect", "Disconnect", or "Ignore" if device is connected to any other WiFi network -->
+					<!-- "Connect", "Disconnect", or "Ignore" if device is connected to a Cellular network -->
 					<dict>
 						<key>Action</key>
 						<string>Connect</string>
