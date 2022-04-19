@@ -48,6 +48,13 @@
 				<!-- Remote Identifier -->
 				<key>RemoteIdentifier</key>
 				<string>example.com</string>
+				
+				<!-- DNS Server (optional, can be internal and/or external dns servers) -->
+				<key>ServerAddresses</key>
+				<array>
+					<string>9.9.9.9</string>
+					<string>2620:fe::fe</string>
+				</array>
 
 				<!-- Enabling OnDemand – This can be toggled on/off via System Settings/Network [macOS] and Settings/VPN [iOS] -->
 				<key>OnDemandEnabled</key>
