@@ -1,4 +1,4 @@
-<!-- VPN OnDemand.mobileconfig – Version 0.1.1 -->
+<!-- VPN OnDemand.mobileconfig – Version 0.1.2 -->
 <!-- Description: Configuration File for VPN OnDemand to be used on macOS or iOS -->
 <!-- Found here: https://github.com/nerd-one/VPN-OnDemand -->
 <!-- Author: Florian Knapp – florian@nerd.one – https://nerd.one -->
@@ -12,6 +12,16 @@
 	<array>
 		<!-- Configuration for VPNType "IKEv2" -->
 		<dict>
+			<!-- DNS Server (optional, can be internal and/or external dns servers) -->
+			<key>DNS</key>
+			<dict>
+				<key>ServerAddresses</key>
+				<array>
+					<string>9.9.9.9</string>
+					<string>2620:fe::fe</string>
+				</array>
+			</dict>
+			
 			<key>IKEv2</key>
 			<dict>
 
@@ -48,13 +58,6 @@
 				<!-- Remote Identifier -->
 				<key>RemoteIdentifier</key>
 				<string>example.com</string>
-				
-				<!-- DNS Server (optional, can be internal and/or external dns servers) -->
-				<key>ServerAddresses</key>
-				<array>
-					<string>9.9.9.9</string>
-					<string>2620:fe::fe</string>
-				</array>
 
 				<!-- Enabling OnDemand – This can be toggled on/off via System Settings/Network [macOS] and Settings/VPN [iOS] -->
 				<key>OnDemandEnabled</key>
@@ -210,6 +213,16 @@
 
 		<!-- Configuration for VPNType "IPSec" -->
 		<dict>
+			<!-- DNS Server (optional, can be internal and/or external dns servers) -->
+			<key>DNS</key>
+			<dict>
+				<key>ServerAddresses</key>
+				<array>
+					<string>9.9.9.9</string>
+					<string>2620:fe::fe</string>
+				</array>
+			</dict>
+			
 			<key>IPSec</key>
 			<dict>
 
