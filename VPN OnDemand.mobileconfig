@@ -133,7 +133,7 @@
 								<key>DomainAction</key>
 								<string>ConnectIfNeeded</string>
 								<key>RequiredURLStringProbe</key>
-								<string>https://vpn.nerd.one/12.34.56.78</string>
+								<string>0.0.0.0</string>
 							</dict>
 						</array>
 					</dict>
@@ -330,7 +330,7 @@
 								<key>DomainAction</key>
 								<string>ConnectIfNeeded</string>
 								<key>RequiredURLStringProbe</key>
-								<string>https://vpn.nerd.one/12.34.56.78</string>
+								<string>0.0.0.0</string>
 							</dict>
 						</array>
 					</dict>
